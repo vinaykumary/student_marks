@@ -1,0 +1,20 @@
+ <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
+<% @page_title="Add new Student" %>
+
+
+<div>
+  <h2>Add a new Student</h2>
+
+  <%= form_for(:student, :url => {:action => 'create'}) do |f| %>
+
+   <%= render( :partial => "form", :locals=>{:f=>f}) %>
+
+    <div>
+      <%= submit_tag("Add Student") %>
+    </div>
+
+  <% end %>
+</div>

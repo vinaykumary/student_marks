@@ -1,0 +1,23 @@
+<h4>Students List</h4>
+<h6>Department: <%= @department_name %> </h6>
+<h6>Semester: <%= @semester %> </h6>
+
+<table border="2">
+  <tr>
+    <th><%= sortable "roll_no", "Roll Number", @department_id, @semester%></th>
+    <th><%= sortable "name", "Name", @department_id, @semester%></th>
+    <th><%= sortable "section", "Section", @department_id, @semester%></th>
+    <th></th>
+  </tr>
+
+  <% for student in @students %>
+  <tr>
+    <td><%= student.roll_no %></td>
+    <td><%= student.name %></td>
+    <td><%= student.section %></td>
+    <td><%= link_to("Manage",{:action=>'show', :id=>student.id},:class=>'action show')%></td>
+  </tr>
+  <% end %>
+</table>
+<%= will_paginate @students %>
+<div>

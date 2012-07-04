@@ -1,0 +1,27 @@
+<% @page_title="#{@student.name}" %>
+<h2>Student Information</h2>
+<table>
+  <tr>
+    <td>Name:</td>
+    <td><%= @student.name %></th>
+  </tr>
+    <tr>
+    <td>Roll Number:</td>
+    <td><%= @student.roll_no %></th>
+  </tr>
+    <tr>
+    <td>Register Number:</td>
+    <td><%= @student.reg_no %></th>
+  </tr>
+    <tr>
+    <td>Department:</td>
+    <td><%= @student.department.name %></th>
+  </tr>
+    <tr>
+    <td>Section:</td>
+    <td><%= @student.section %></th>
+  </tr>
+</table>
+
+<br>
+<h2>Exam Performance:</h2>

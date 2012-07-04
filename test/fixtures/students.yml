@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  Department: MyString
+  Exam: MyString
+  Mark: MyString
+
+two:
+  Department: MyString
+  Exam: MyString
+  Mark: MyString

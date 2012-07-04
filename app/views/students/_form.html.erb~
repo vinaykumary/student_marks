@@ -1,0 +1,23 @@
+ <table>
+      <tr>
+        <th>Name</th>
+        <td><%= f.text_field(:name) %></td>
+      </tr>
+      <tr>
+        <th>Roll No</th>
+        <td><%= f.text_field(:roll_no) %></td>
+      </tr>
+      <tr>
+        <th>Department</th>
+        <td><%= collection_select(:student, :department_id, Department.all, :id, :name) %>
+</td>
+      </tr>
+      <tr>
+        <th>Semester</th>
+        <td><%= f.text_field(:semester) %></td>
+      </tr>
+      <tr>
+        <th>Section</th>
+        <td><%= f.text_field(:section) %></td>
+      </tr>
+    </table>

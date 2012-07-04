@@ -1,0 +1,11 @@
+<h2>Exams</h2>
+
+<form action="/exams/list">
+<table>
+  <tr>
+    <td>Department:</td>
+    <td><%= select_tag :dept,options_from_collection_for_select(Department.all, :id, :name) %></td>
+    <td><input type="submit" name="Filter" /></td>
+    </tr>
+</table>
+</form>

@@ -1,0 +1,29 @@
+<% @page_title="List Subjects" %>
+<div class="subject list">
+  <h2>Subjects for <%= Department.find(@department).name %> department Semester <%= @semester%> </h2>
+
+  <%= link_to("Add New Subject", {:action => 'new'}, :class => 'action new') %>
+
+  <table class="listing" summary="Subject list">
+    <tr class="header">
+      <th>Name</th>
+      <th>Subject code</th>
+      <th>Credits</th>
+
+    </tr>
+    <% @subjects.each do |subject| %>
+    <tr>
+      <td><%= subject.name %></td>
+      <td><%= subject.subject_code %></td>
+      <td class="center"><%= subject.credits %></td>
+      <td class="actions">
+        <%= link_to("Show", {:action => 'show', :id => subject.id}, :class => 'action show') %>
+        <%= link_to("Edit", {:action => 'edit', :id => subject.id}, :class => 'action edit') %>
+        <%= link_to("Delete", {:action => 'delete', :id => subject.id}, :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+  <br>
+  <%= link_to("Back", {:action => 'index'}) %>
+</div>

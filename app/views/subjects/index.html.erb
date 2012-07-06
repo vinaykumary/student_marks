@@ -1,0 +1,25 @@
+
+
+<center><h4>Subjects Management</h4></center>
+
+<form action="/subjects/list">
+  <table>
+    <tr>
+      <td>Department:</td>
+      <td><select name="dept">
+          <% for department in @departments %>
+            <option value="<%= department.id %>"> <%= department.name %>
+          <% end %>
+          </select>
+      </td>
+
+    </tr>
+    <tr>
+      <td>Semester:</td>
+      <td><input type="text" name="semester"/>
+    </tr>
+    <tr>
+      <input type="submit" value="Go"/>
+    </tr>
+  </table>
+</form>

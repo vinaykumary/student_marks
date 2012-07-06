@@ -4,4 +4,6 @@ class Subject < ActiveRecord::Base
   has_many :marks
     attr_protected :id
 
+    scope :dept_sem, lambda{ |dept,sem| { :conditions => ["department_id = ? and semester = ? ", dept, sem], :order => "subject_code" }}
+
 end

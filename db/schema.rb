@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120704004444) do
+ActiveRecord::Schema.define(:version => 20120705135306) do
 
   create_table "departments", :force => true do |t|
     t.integer "dept_code", :null => false
@@ -19,9 +19,10 @@ ActiveRecord::Schema.define(:version => 20120704004444) do
   end
 
   create_table "exams", :force => true do |t|
-    t.string  "name",          :null => false
-    t.integer "department_id"
-    t.integer "semester"
+    t.string   "name",          :null => false
+    t.integer  "department_id"
+    t.integer  "semester"
+    t.datetime "date"
   end
 
   create_table "marks", :force => true do |t|
@@ -49,7 +50,6 @@ ActiveRecord::Schema.define(:version => 20120704004444) do
     t.integer "semester",      :null => false
     t.integer "credits",       :null => false
     t.integer "department_id"
-    t.string  "abbr",          :null => false
     t.string  "abbreviation",  :null => false
   end
 

@@ -6,6 +6,26 @@
     <td>Department:</td>
     <td><%= select_tag :dept,options_from_collection_for_select(Department.all, :id, :name) %></td>
     <td><input type="submit" value="Filter" /></td>
+     <td><a href="/exams/list/"><input type="button" value="Clear Filter" /></a></td>
     </tr>
 </table>
 </form>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Name</th>
+    <th>Semster</th>
+    <th>Department</th>
+  </tr>
+  <% for exam in @exams %>
+  <tr>
+    <td><%= exam.date.to_date %></td>
+    <td><%= exam.name %></td>
+    <td><%= exam.semester %></td>
+    <td><%= exam.department.name %></td>
+  <tr>
+  <% end %>
+<table>
+
+<a href="/exams/new">Add a New Exam</a>

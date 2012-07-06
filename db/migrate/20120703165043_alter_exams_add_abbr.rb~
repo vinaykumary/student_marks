@@ -1,8 +1,0 @@
-class AlterExamsAddAbbr < ActiveRecord::Migration
-  def up
-    add_column("exams","abbreviation",:string)
-  end
-
-  def down
-  end
-end

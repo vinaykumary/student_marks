@@ -1,0 +1,32 @@
+<% @page_title="Show Subject" %>
+
+<%= link_to("<< Back to List", :action => 'list',:dept => @subject.department_id,:semester => @subject.semester )%>
+
+<div class="subject show">
+  <h2>Show Subject</h2>
+
+  <table summary="Subject detail view">
+
+    <tr>
+      <th>Subject Code</th>
+      <td><%= @subject.subject_code %></td>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <td><%= @subject.name %></td>
+    </tr>
+    <tr>
+      <th>Department</th>
+      <td><%= @subject.department.name %></td>
+    </tr>
+    <tr>
+      <th>Semester</th>
+      <td><%= @subject.semester %></td>
+    </tr>
+    <tr>
+      <th>Abbreviation</th>
+      <td><%= @subject.abbreviation %></td>
+    </tr>
+  </table>
+
+</div>

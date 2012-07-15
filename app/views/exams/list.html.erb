@@ -14,16 +14,18 @@
 <table>
   <tr>
     <th>Date</th>
-    <th>Name</th>
-    <th>Semster</th>
     <th>Department</th>
+    <th>Semster</th>
+    <th>Name</th>
+    <th>Manage</th>
   </tr>
   <% for exam in @exams %>
   <tr>
     <td><%= exam.date.to_date %></td>
-    <td><%= exam.name %></td>
-    <td><%= exam.semester %></td>
     <td><%= exam.department.name %></td>
+    <td><%= exam.semester %></td>
+    <td><%= exam.name %></td>
+    <td><%= link_to "Manage",{:action=>"exam_mgmt",:id=>exam.id} %></td>
   <tr>
   <% end %>
 <table>

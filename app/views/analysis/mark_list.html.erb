@@ -1,0 +1,48 @@
+<center><h3>Panimalar Institute of Technology</h3></center>
+<center><h3>Department of <%=@department.name %></h3></center>
+<center><h3><%= @year_map[@year]%> Year - Semester <%=@semester%></h3></center>
+<center><h3><%= @exam.name %></h3></center>
+<br>
+<b>Max. Marks: 100</b>
+<br>
+<center>
+  <table border=1>
+    <tr>
+      <th>SNO</th>
+      <th>Roll No.</th>
+      <th>Name</th>
+      <% for subject in @subjects %>
+        <th><%=subject.abbreviation%></th>
+      <% end %>
+      <th>Total</th>
+      <th>Percentage</th>
+      <th>Result</th>
+      <th>Rank</th>
+    <tr>
+    <% sno=1 %>
+    <% for student in @students %>
+      <tr>
+        <td><%=sno%></td>
+        <% sno+=1 %>
+        <td><%=student.roll_no%></td>
+        <td><%=student.name %></td>
+        <td><%=@marks[student.id][0].marks%></td>
+        <td><%=@marks[student.id][1].marks%></td>
+        <td><%=@marks[student.id][2].marks%></td>
+        <td><%=@marks[student.id][3].marks%></td>
+        <td><%=@marks[student.id][4].marks%></td>
+        <td><%=@marks[student.id][5].marks%></td>
+        <% result=@results.detect{|r| r.student_id==student.id} %>
+        <td><%=result.total%></td>
+        <td><%=result.percentage%>%</td>
+        <td><%=result.result%></td>
+        <td><%if result.result!="A" %>
+              <%= result.rank%>
+            <% else %>
+              <%a="--"%>
+              <%=a%>
+            <%end%>
+        </td>
+      </tr>
+    <% end %>
+  </table>

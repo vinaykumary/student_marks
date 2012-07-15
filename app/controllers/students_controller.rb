@@ -9,7 +9,7 @@ class StudentsController < ApplicationController
     @department_name=Department.find(params[:dept]).name
     @department_id=params[:dept]
     @semester=params[:semester]
-    @students=Student.order(sort_column+" "+sort_direction).paginate(:per_page=> 5,:page=>params[:page])
+    @students=Student.where(:department_id=>params[:dept],:semester=>params[:semester]).order(sort_column+" "+sort_direction).paginate(:per_page=> 5,:page=>params[:page])
   end
 
   def show

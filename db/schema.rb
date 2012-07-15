@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120705135306) do
+ActiveRecord::Schema.define(:version => 20120715191240) do
 
   create_table "departments", :force => true do |t|
     t.integer "dept_code", :null => false
@@ -30,7 +30,17 @@ ActiveRecord::Schema.define(:version => 20120705135306) do
     t.integer "exam_id"
     t.integer "subject_id"
     t.integer "marks"
-    t.boolean "result"
+    t.string  "result"
+  end
+
+  create_table "results", :force => true do |t|
+    t.integer "student_id"
+    t.integer "exam_id"
+    t.integer "total"
+    t.float   "percentage"
+    t.integer "rank"
+    t.string  "result"
+    t.string  "section"
   end
 
   create_table "students", :force => true do |t|

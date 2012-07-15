@@ -1,0 +1,32 @@
+<h3>Mark Analysis</h3>
+<table>
+  <tr>
+    <th>Exam Name:</th>
+    <td><%= @exam.name %><td>
+  </tr>
+  <tr>
+    <th>Department:</th>
+    <td><%= @exam.department.name %><td>
+  </tr>
+  <tr>
+    <th>Semester:</th>
+    <td><%= @exam.semester %><td>
+  </tr>
+  <tr>
+    <th>Exam Date:</th>
+    <td><%= @exam.date.to_date %><td>
+  </tr>
+</table>
+
+<h5>Menu:</h5>
+<ul>
+  <li>Mark List:&nbsp;&nbsp;<%=link_to "Section A", :action=>'mark_list', :id=>@exam.id,:section=>"A"%>&nbsp;&nbsp;<%=link_to "Section B", :action=>'mark_list', :id=>@exam.id,:section=>"B"%></li>
+  <li>Failures List
+    <ul>
+      <li>Individual Subject Failures</li>
+      <li>List by No. of Subjects Failed</li>
+      <li>Failures Summary</li>
+    </ul>
+  </li>
+  <li>Result Analysis</li>
+</ul>

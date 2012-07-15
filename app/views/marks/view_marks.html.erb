@@ -1,0 +1,60 @@
+<h3>View Marks</h3>
+
+<table>
+  <tr>
+    <th>Exam Name:</th>
+    <td><%= @exam.name %><td>
+  </tr>
+  <tr>
+    <th>Department:</th>
+    <td><%= @exam.department.name %><td>
+  </tr>
+  <tr>
+    <th>Semester:</th>
+    <td><%= @exam.semester %><td>
+  </tr>
+  <tr>
+    <th>Exam Date:</th>
+    <td><%= @exam.date.to_date %><td>
+  </tr>
+  <tr>
+    <th>Subject:</th>
+    <td><%= @subject.name %><td>
+  </tr>
+</table>
+
+<br>
+<br>
+<table>
+<tr>
+  <th>Select Section:</th>
+  <td><%= link_to 'A', url_for(params.merge(:section => 'A', :only_path => false)) %></td>
+  <td><%= link_to 'B',  url_for(params.merge(:section => 'B', :only_path => false)) %></td>
+  <td><%= link_to 'Both Sections',  url_for(params.merge(:section=>nil, :only_path => false)) %></td>
+</tr>
+</table>
+<br>
+<p>Mark is -1 if student is absent for the exam</p>
+<br>
+
+<table>
+  <tr>
+    <th><%= mark_sortable "roll_no","Roll Number",@exam.id,@subject.id%></th>
+    <th><%= mark_sortable "name","Name",@exam.id,@subject.id%></th>
+    <th><%= mark_sortable "section","Section",@exam.id,@subject.id%></th>
+    <th><%= mark_sortable "marks","Marks",@exam.id,@subject.id%></th>
+    <th><%= mark_sortable "result","Result",@exam.id,@subject.id%></th>
+  </tr>
+
+
+  <% for mark in @marks%>
+      <tr>
+        <td><%= mark.student.roll_no %></td>
+        <td><%= mark.student.name %></td>
+        <td><%= mark.student.section %></td>
+        <td><%= mark.marks %></td>
+        <td><%= mark.result %></td>
+      </tr>
+    <% end %>
+
+</table>

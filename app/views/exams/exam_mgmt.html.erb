@@ -1,0 +1,30 @@
+<h3>Exam Management</h3>
+
+<table>
+  <tr>
+    <th>Exam Name:</th>
+    <td><%= @exam.name %><td>
+  </tr>
+  <tr>
+    <th>Department:</th>
+    <td><%= @exam.department.name %><td>
+  </tr>
+  <tr>
+    <th>Semester:</th>
+    <td><%= @exam.semester %><td>
+  </tr>
+  <tr>
+    <th>Exam Date:</th>
+    <td><%= @exam.date.to_date %><td>
+  </tr>
+</table>
+
+<br>
+
+<h4>Menu:</h4>
+<ul>
+  <li><%=link_to "Update Marks", {:action=>"exam_subs",:id=>@exam.id} %></li>
+    <li><%=link_to "View Marks", {:controller=>'marks', :action=>"display_marks",:id=>@exam.id} %></li>
+  <li><%=link_to "Mark Analysis", {:controller=>"analysis",:id=>@exam.id} %></li>
+  <li><%=link_to "Back to List", {:action=>"list"} %></li>
+<ul>

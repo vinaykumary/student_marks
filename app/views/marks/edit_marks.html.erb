@@ -1,0 +1,64 @@
+<h3>Update Marks</h3>
+
+<table>
+  <tr>
+    <th>Exam Name:</th>
+    <td><%= @exam.name %><td>
+  </tr>
+  <tr>
+    <th>Department:</th>
+    <td><%= @exam.department.name %><td>
+  </tr>
+  <tr>
+    <th>Semester:</th>
+    <td><%= @exam.semester %><td>
+  </tr>
+  <tr>
+    <th>Exam Date:</th>
+    <td><%= @exam.date.to_date %><td>
+  </tr>
+  <tr>
+    <th>Subject:</th>
+    <td><%= @subject.name %><td>
+  </tr>
+</table>
+
+<br>
+<br>
+<table>
+<tr>
+  <th>Select Section:</th>
+  <td><%= link_to 'A', url_for(params.merge(:section => 'A', :only_path => false)) %></td>
+  <td><%= link_to 'B',  url_for(params.merge(:section => 'B', :only_path => false)) %></td>
+</tr>
+</table>
+<br>
+<p>Please enter marks as -1 if student is absent for the exam</p>
+<br>
+<%=  form_for :mark,:url=>{:action=>'update',:exam=>@exam.id} do -%>
+<table>
+  <tr>
+    <th>Roll No</th>
+    <th>Name</th>
+    <th>Marks</th>
+  </tr>
+
+
+  <% for mark in @marks%>
+
+ <%= fields_for "mark[]", mark do |mark_fields| %>
+
+      <%= mark_fields.hidden_field :id %>
+
+      <%= mark_fields.hidden_field :result %>
+      <tr>
+        <td><%= mark.student.roll_no %></td>
+        <td><%= mark.student.name %></td>
+        <td><%= mark_fields.text_field :marks %></td>
+        <%= mark_fields.hidden_field :student_id,:value=>mark.student.id %>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+<%= submit_tag "Update" %>
+<% end %>

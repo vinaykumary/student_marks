@@ -6,7 +6,7 @@ class SubjectsController < ApplicationController
   def list
     @department=params[:dept]
     @semester=params[:semester]
-    @subjects=Subject.where("department_id=#{@department} AND semester=#{@semester}")
+    @subjects=Subject.where("department_id=#{@department} AND semester=#{@semester}").order("subject_code")
   end
 
   def show

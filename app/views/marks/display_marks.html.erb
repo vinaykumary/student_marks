@@ -1,0 +1,19 @@
+<h3>View Marks</h3>
+
+<br>
+
+<h5>Please select the Subject:</h5>
+<table>
+  <tr>
+    <th>Subject Code</th>
+    <th>Subject Name</th>
+    <th></th>
+  </tr>
+  <% for subject in @subjects %>
+    <tr>
+      <td><%= subject.subject_code %></td>
+      <td><%= subject.name %></td>
+      <td><%= link_to "View",{:controller=>"marks",:action=>"view_marks",:subject=>subject.id,:exam=>@exam.id} %></td>
+    </tr>
+  <% end %>
+</table>

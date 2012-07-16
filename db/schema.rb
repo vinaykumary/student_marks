@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120715191240) do
+ActiveRecord::Schema.define(:version => 20120716141919) do
 
   create_table "departments", :force => true do |t|
     t.integer "dept_code", :null => false
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20120715191240) do
     t.integer "rank"
     t.string  "result"
     t.string  "section"
+    t.integer "no_failed"
   end
 
   create_table "students", :force => true do |t|

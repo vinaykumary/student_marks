@@ -1,0 +1,60 @@
+<center><h3>Panimalar Institute of Technology</h3></center>
+<center><h3>Department of <%=@department.name %></h3></center>
+<center><h3><%= @year_map[@year]%> Year - Semester <%=@semester%></h3></center>
+<center><h3><%= @exam.name %></h3></center>
+<br><br>
+<center><h3>Result Analysis</h3></center>
+<br>
+<br>
+<b>Exam Date: <%=@exam.date.to_date%></b>
+<br>
+<b>Total Students: <%= @total_students %></b>
+<br>
+<br>
+<b>No. of Students who Passed in all subjects: <%= @total_pass %></b>
+<br>
+<br>
+<b>Overall Pass Percentage: <%= @pass_percent_ovr %></b>
+<br>
+<br>
+<center>
+<table>
+  <tr>
+    <th>S. No.</th>
+    <th>Subject Code & Name</th>
+    <th>Staff</th>
+    <th>No. of Students present</th>
+    <th>No. of Students absent</th>
+    <th>No. of Students passed</th>
+    <th>No. of Students failed</th>
+    <th>Pass Percentage</th>
+  </tr>
+  <%sno=1%>
+  <% for subject in @analysis_data %>
+    <% sub=Subject.find(@analysis_data[sno-1].keys[0]) %>
+    <tr>
+      <td><%= sno%></td>
+      <td><%= sub.subject_code +" - "+sub.name %>
+      <td>&nbsp;&nbsp;&nbsp;</td>
+      <td><%=@analysis_data[sno-1][@analysis_data[sno-1].keys[0]][:present]%></td>
+      <td><%=@analysis_data[sno-1][@analysis_data[sno-1].keys[0]][:absent]%></td>
+      <td><%=@analysis_data[sno-1][@analysis_data[sno-1].keys[0]][:passed]%></td>
+      <td><%=@analysis_data[sno-1][@analysis_data[sno-1].keys[0]][:failed]%></td>
+      <td><%=@analysis_data[sno-1][@analysis_data[sno-1].keys[0]][:pass_percent]%></td>
+      <% sno+=1 %>
+    </tr>
+  <%end%>
+</table>
+<br><br>
+<h4>Ranks:</h4>
+<b>Section A</b>
+I Rank: <b> <%=@Asec_ranks[0].student.name +" - "+ @Asec_ranks[0].total.name%>/600</b>
+II Rank: <b> <%=@Asec_ranks[1].student.name +" - "+@Asec_ranks[1].total.name%>/600 </b><br>
+III Rank: <b> <%=@Asec_ranks[2].student.name +" - "+@Asec_ranks[2].total.name%>/600 </b><br>
+<br><br>
+<b>Section B</b>
+I Rank: <b> <%=@Bsec_ranks[0].student.name +" - "+@Bsec_ranks[0].total.name%>/600</b>
+II Rank: <b> <%=@Bsec_ranks[1].student.name +" - "+@Bsec_ranks[1].total.name%>/600 </b><br>
+III Rank: <b> <%=@Bsec_ranks[2].student.name +" - "+@Bsec_ranks[2].total.name%>/600 </b><br>
+<br><br>
+<br>

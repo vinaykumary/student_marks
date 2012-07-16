@@ -5,6 +5,8 @@
 <br>
 <b>Max. Marks: 100</b>
 <br>
+<b>Exam Date: <%=@exam.date%></b>
+<br>
 <center>
   <table border=1>
     <tr>
@@ -35,12 +37,18 @@
         <% result=@results.detect{|r| r.student_id==student.id} %>
         <td><%=result.total%></td>
         <td><%=result.percentage%>%</td>
-        <td><%=result.result%></td>
-        <td><%if result.result!="A" %>
+        <td><%if result.result=="P"%>
+              <%= "Pass"%>
+            <% elsif result.result=="F"%>
+              <%="Fail"%>
+            <% else %>
+              <%="AB"%>
+            <%end%>
+        </td>
+        <td><% if result.result!="A" %>
               <%= result.rank%>
             <% else %>
-              <%a="--"%>
-              <%=a%>
+              <%= "--" %>
             <%end%>
         </td>
       </tr>

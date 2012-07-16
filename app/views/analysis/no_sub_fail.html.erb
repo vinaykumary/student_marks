@@ -1,0 +1,110 @@
+<center><h3>Panimalar Institute of Technology</h3></center>
+<center><h3>Department of <%=@department.name %></h3></center>
+<center><h3><%= @year_map[@year]%> Year - Semester <%=@semester%></h3></center>
+<center><h3><%= @exam.name %></h3></center>
+<br>
+<b>Max. Marks: 100</b>
+<br>
+<b>Exam Date: <%=@exam.date.to_date%></b>
+<br>
+<br>
+<% if @single_sub_f==0 && @two_sub_f==0 && @gt_three_f==0 %>
+  NIL FAILURES!
+<% else %>
+  <%if @single_sub_f!=0 %>
+    <h4>No. of Failures in one Subject: <%=@single_sub_f%></h4>
+    <table border=1>
+        <tr>
+          <th>SNO</th>
+          <th>Roll No.</th>
+          <th>Name</th>
+          <th>Section</th>
+          <% for subject in @subjects %>
+            <th><%=subject.abbreviation%></th>
+          <% end %>
+        </tr>
+        <% sno1=1 %>
+        <% for student in @single_sub_studs %>
+          <tr>
+            <td><%=sno1%></td>
+            <% sno1+=1 %>
+            <td><%= student.roll_no %></td>
+            <td><%=student.name %></td>
+            <td><%=student.section %></td>
+            <td><%=@sing_sub_marks[student.id][0].marks%></td>
+            <td><%=@sing_sub_marks[student.id][1].marks%></td>
+            <td><%=@sing_sub_marks[student.id][2].marks%></td>
+            <td><%=@sing_sub_marks[student.id][3].marks%></td>
+            <td><%=@sing_sub_marks[student.id][4].marks%></td>
+            <td><%=@sing_sub_marks[student.id][5].marks%></td>
+          </tr>
+        <% end %>
+    </table>
+  <% end %>
+  <%if @two_sub_f!=0 %>
+    <br>
+    <br>
+    <br>
+    <h4>No. of Failures in two Subjects: <%=@two_sub_f%></h4>
+    <table border=1>
+        <tr>
+          <th>SNO</th>
+          <th>Roll No.</th>
+          <th>Name</th>
+          <th>Section</th>
+          <% for subject in @subjects %>
+            <th><%=subject.abbreviation%></th>
+          <% end %>
+        </tr>
+        <% sno2=1 %>
+        <% for student in @two_sub_studs %>
+          <tr>
+            <td><%=sno2%></td>
+            <% sno2+=1 %>
+            <td><%=student.roll_no%></td>
+            <td><%=student.name %></td>
+            <td><%=student.section %></td>
+            <td><%=@two_sub_marks[student.id][0].marks%></td>
+            <td><%=@two_sub_marks[student.id][1].marks%></td>
+            <td><%=@two_sub_marks[student.id][2].marks%></td>
+            <td><%=@two_sub_marks[student.id][3].marks%></td>
+            <td><%=@two_sub_marks[student.id][4].marks%></td>
+            <td><%=@two_sub_marks[student.id][5].marks%></td>
+          </tr>
+        <% end %>
+    </table>
+  <% end %>
+  <%if @gt_three_f!=0 %>
+    <br>
+    <br>
+    <br>
+    <h4>No. of Failures in 3 or more Subjects: <%=@gt_three_f%></h4>
+    <table border=1>
+        <tr>
+          <th>SNO</th>
+          <th>Roll No.</th>
+          <th>Name</th>
+          <th>Section</th>
+          <% for subject in @subjects %>
+            <th><%=subject.abbreviation%></th>
+          <% end %>
+        </tr>
+        <% sno2=1 %>
+        <% for student in @gt_three_sub_studs %>
+          <tr>
+            <td><%=sno2%></td>
+            <% sno2+=1 %>
+            <td><%=student.roll_no%></td>
+            <td><%=student.name %></td>
+            <td><%=student.section %></td>
+            <td><%=@gt_three_sub_marks[student.id][0].marks%></td>
+            <td><%=@gt_three_sub_marks[student.id][1].marks%></td>
+            <td><%=@gt_three_sub_marks[student.id][2].marks%></td>
+            <td><%=@gt_three_sub_marks[student.id][3].marks%></td>
+            <td><%=@gt_three_sub_marks[student.id][4].marks%></td>
+            <td><%=@gt_three_sub_marks[student.id][5].marks%></td>
+          </tr>
+        <% end %>
+    </table>
+  <% end %>
+<% end %>

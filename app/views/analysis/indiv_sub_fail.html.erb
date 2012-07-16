@@ -1,0 +1,45 @@
+<center><h3>Panimalar Institute of Technology</h3></center>
+<center><h3>Department of <%=@department.name %></h3></center>
+<center><h3><%= @year_map[@year]%> Year - Semester <%=@semester%></h3></center>
+<center><h3><%= @exam.name %></h3></center>
+<br>
+<br>
+<b>Subject Code / Name: <%= @subject.subject_code%> - <%=@subject.name%></b>
+<br>
+<b>Staff Name(s):</b>
+<br>
+<br>
+<br>
+<b>No. of Failures: <%= @no_fail%></b>
+<br>
+<b>No. of Absentees: <%= @no_absent%></b>
+<br>
+<br>
+<br>
+  <table border=1>
+    <tr>
+      <th>SNO</th>
+      <th>Section</th>
+      <th>Roll No.</th>
+      <th>Name</th>
+      <th>Marks</th>
+    <tr>
+    <%sno=1%>
+    <% for mark in @marks %>
+      <tr>
+        <%student=mark.student%>
+        <td><%=sno%></td>
+        <td><%=student.section%></td>
+        <td><%=student.roll_no%></td>
+        <td><%=student.name%></td>
+        <td>
+            <%if mark.marks==-1%>
+              <%="AB"%>
+            <%else%>
+              <%=mark.marks%>
+            <%end%>
+         </td>
+         <%sno+=1%>
+      </tr>
+    <% end %>
+  </table>

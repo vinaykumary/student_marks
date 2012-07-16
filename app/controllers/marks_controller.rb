@@ -26,16 +26,27 @@ class MarksController < ApplicationController
         @marks[mark[0]]["result"]="A"
         if(result.result!="F")
           result.result="A"
+#          if result.no_failed.nil?
+#            result.no_failed=1
+#          else
+#            result.no_failed+=1
+#          end
         end
       else
          @marks[mark[0]]["result"]="F"
          result.result="F"
+          if result.no_failed.nil?
+            result.no_failed=1
+          else
+            result.no_failed+=1
+          end
       end
       if result.total.nil?
         result.total=mark[1][:marks].to_i
       else
         result.total+=mark[1][:marks].to_i
       end
+      result.percentage=((result.total.to_f/600).to_f*100).to_f.round(2)
       result.save
     end
     Mark.update(@marks.keys,@marks.values)

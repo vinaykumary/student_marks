@@ -6,11 +6,11 @@
   </tr>
   <tr>
     <th>Department:</th>
-    <td><%= @exam.department.name %><td>
+    <td><%= @department.name %><td>
   </tr>
   <tr>
     <th>Semester:</th>
-    <td><%= @exam.semester %><td>
+    <td><%= @semester %><td>
   </tr>
   <tr>
     <th>Exam Date:</th>
@@ -23,10 +23,22 @@
   <li>Mark List:&nbsp;&nbsp;<%=link_to "Section A", :action=>'mark_list', :id=>@exam.id,:section=>"A"%>&nbsp;&nbsp;<%=link_to "Section B", :action=>'mark_list', :id=>@exam.id,:section=>"B"%></li>
   <li>Failures List
     <ul>
-      <li>Individual Subject Failures</li>
-      <li>List by No. of Subjects Failed</li>
-      <li>Failures Summary</li>
+      <li>Individual Subject Failures<br>
+          <form action="/analysis/indiv_sub_fail">
+          <table>
+            <tr>
+              <td>Select Subject:</td>
+              <td><%= select_tag :sub,options_from_collection_for_select(@subjects, :id, :name) %></td>
+              <%= hidden_field_tag :id,@exam.id %>
+              <td><input type="submit" value="View" /></td>
+              </tr>
+          </table>
+          </form>
+      </li>
+
+      <li><%=link_to "List by No. of Subjects Failed", :action=>'no_sub_fail',:id=>@exam.id %></li>
+      <li><%=link_to "Failures Summary", :action=>'fail_summary',:id=>@exam.id %></li>
     </ul>
   </li>
-  <li>Result Analysis</li>
+  <li><%=link_to "Result Analysis", :action=>'result_analysis',:id=>@exam.id %></li>
 </ul>

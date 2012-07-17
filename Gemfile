@@ -1,11 +1,26 @@
 source 'https://rubygems.org'
 
+#ruby '1.9.3'
 gem 'rails', '3.2.6'
+
+#heroku
+gem 'heroku'
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+
+group :development, :test do
+  gem 'mysql2'
+end
+group :production do
+  gem 'pg'
+end
+
+group :production do
+  gem 'thin'
+end
 gem 'will_paginate','3.0.3'
 
 

@@ -2,23 +2,23 @@
 <h2>Student Information</h2>
 <table>
   <tr>
-    <th>Name:</th>
+    <td>Name:</td>
     <td><%= @student.name %></th>
   </tr>
     <tr>
-    <th>Roll Number:</th>
+    <td>Roll Number:</td>
     <td><%= @student.roll_no %></th>
   </tr>
     <tr>
-    <th>Register Number:</th>
+    <td>Register Number:</td>
     <td><%= @student.reg_no %></th>
   </tr>
     <tr>
-    <th>Department:</th>
+    <td>Department:</td>
     <td><%= @student.department.name %></th>
   </tr>
     <tr>
-    <th>Section:</th>
+    <td>Section:</td>
     <td><%= @student.section %></th>
   </tr>
 </table>

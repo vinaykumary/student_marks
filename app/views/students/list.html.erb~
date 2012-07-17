@@ -5,14 +5,17 @@
 <table border="2">
   <tr>
     <th><%= sortable "roll_no", "Roll Number", @department_id, @semester%></th>
+    <th><%= sortable "reg_no", "Register Number", @department_id, @semester%></th>
     <th><%= sortable "name", "Name", @department_id, @semester%></th>
     <th><%= sortable "section", "Section", @department_id, @semester%></th>
+
     <th></th>
   </tr>
 
   <% for student in @students %>
   <tr>
     <td><%= student.roll_no %></td>
+    <td><%= student.reg_no %></td>
     <td><%= student.name %></td>
     <td><%= student.section %></td>
     <td><%= link_to("Manage",{:action=>'show', :id=>student.id},:class=>'action show')%></td>

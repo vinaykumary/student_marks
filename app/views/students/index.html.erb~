@@ -12,13 +12,15 @@
           <% end %>
           </select>
       </td>
+
     </tr>
     <tr>
       <td>Semester:</td>
       <td><input type="text" name="semester"/>
     </tr>
     <tr>
-      <input type="submit" value="Go"/>
+
     </tr>
   </table>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Go"/>
 </form>

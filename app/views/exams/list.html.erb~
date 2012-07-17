@@ -25,7 +25,7 @@
     <td><%= exam.department.name %></td>
     <td><%= exam.semester %></td>
     <td><%= exam.name %></td>
-    <td><%= link_to "Manage",{:action=>"exam_subs",:id=>exam.id} %></td>
+    <td><%= link_to "Manage",{:action=>"exam_mgmt",:id=>exam.id} %></td>
   <tr>
   <% end %>
 <table>

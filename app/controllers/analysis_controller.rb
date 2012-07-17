@@ -1,5 +1,7 @@
 class AnalysisController < ApplicationController
 
+  layout "output", :except=>[:index]
+
   before_filter :index
   $exam=nil
   $subjects=nil

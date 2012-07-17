@@ -1,0 +1,50 @@
+<br>
+<table>
+  <tr>
+    <th>Name:</th>
+    <td><%= @student.name %></th>
+  </tr>
+    <tr>
+    <th>Roll Number:</th>
+    <td><%= @student.roll_no %></th>
+  </tr>
+    <tr>
+    <th>Department:</th>
+    <td><%= @student.department.name %></th>
+  </tr>
+    <tr>
+    <th>Section:</th>
+    <td><%= @student.section %></th>
+  </tr>
+</table>
+
+<br>
+<h3><%=@exam.name %></h3>
+Date: <b><%= @exam.date.to_date%></b>
+<br>
+<table>
+  <tr>
+  <% for subject in @subjects %>
+    <th><%=subject.abbreviation%></th>
+  <%end%>
+    <th>Total</th>
+    <th>Result</th>
+    <th>Percentage</th>
+    <th>Rank</th>
+  </tr>
+  <tr>
+    <%for mark in @marks%>
+      <% if mark.marks!=-1%>
+      <td><%=mark.marks%></td>
+      <%else%>
+      <td>AB</td>
+      <%end%>
+    <%end%>
+    <td><%=@result.total%></td>
+    <td><%=@result.result%></td>
+    <td><%=@result.percentage%></td>
+    <td><%=@result.rank%></td>
+  </tr>
+</table>
+<br>
+<%= link_to "Back", :back%>     

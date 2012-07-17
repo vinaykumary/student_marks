@@ -64,5 +64,17 @@ class ExamsController < ApplicationController
              params["#{field_name.to_s}(3i)"].to_i)
   end
 
+  def delete
+    @exam=Exam.find(params[:id])
+  end
+
+  def destroy
+    @exam=Exam.find(params[:id])
+    Result.destroy_all(["exam_id=#{@exam.id}"])
+    Mark.destroy_all(["exam_id=#{@exam.id}"])
+    @exam.destroy
+    flash[:notice]="Exam Successfully Deleted!"
+    redirect_to :action=>'index'
+  end
 
 end

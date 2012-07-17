@@ -1,8 +1,8 @@
 <center><h2>Students List</h2></center>
-<h6>Department: <%= @department_name %> </h6>
-<h6>Semester: <%= @semester %> </h6>
+<h4>Department: <%= @department_name %> </h4>
+<h4>Semester: <%= @semester %> </h4>
 
-<table border="2">
+<table >
   <tr>
     <th><%= sortable "roll_no", "Roll Number", @department_id, @semester%></th>
     <th><%= sortable "reg_no", "Register Number", @department_id, @semester%></th>
@@ -18,9 +18,9 @@
     <td><%= student.reg_no %></td>
     <td><%= student.name %></td>
     <td><%= student.section %></td>
-    <td><%= link_to("Manage",{:action=>'show', :id=>student.id},:class=>'action show')%></td>
+    <td><%= link_to("View",{:action=>'show', :id=>student.id},:class=>'action show')%></td>
   </tr>
   <% end %>
 </table>
-<%= will_paginate @students %>
-<div>
+<br>
+<%= link_to "Back" ,:action=>'index' %>

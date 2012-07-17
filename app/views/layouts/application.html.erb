@@ -7,7 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
 <div id="page">
+
+<%if !flash[:notice].nil? %>
+  <div id="notice">
+    <p><%= flash[:notice] %></p>
+    <div class="clear"></div>
+  </div>
+<% end %>
 <div id="sidebar">
         <ul id="sidebar-items">
           <li>

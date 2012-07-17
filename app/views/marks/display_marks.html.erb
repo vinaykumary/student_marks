@@ -2,7 +2,6 @@
 
 <br>
 
-<h5>Please select the Subject:</h5>
 <table>
   <tr>
     <th>Subject Code</th>
@@ -17,3 +16,7 @@
     </tr>
   <% end %>
 </table>
+
+<br>
+
+<%= link_to "Back to Exam Management",:controller=>'exams',:action=>'exam_mgmt', :id=>@exam.id%>

@@ -39,11 +39,11 @@
 
 <table>
   <tr>
-    <th><%= mark_sortable "roll_no","Roll Number",@exam.id,@subject.id%></th>
-    <th><%= mark_sortable "name","Name",@exam.id,@subject.id%></th>
-    <th><%= mark_sortable "section","Section",@exam.id,@subject.id%></th>
-    <th><%= mark_sortable "marks","Marks",@exam.id,@subject.id%></th>
-    <th><%= mark_sortable "result","Result",@exam.id,@subject.id%></th>
+    <th><%= mark_sortable "roll_no","Roll Number",@exam.id,@subject.id,@section%></th>
+    <th><%= mark_sortable "name","Name",@exam.id,@subject.id,@section%></th>
+    <th><%= mark_sortable "section","Section",@exam.id,@subject.id,@section%></th>
+    <th><%= mark_sortable "marks","Marks",@exam.id,@subject.id,@section%></th>
+    <th><%= mark_sortable "result","Result",@exam.id,@subject.id,@section%></th>
   </tr>
 
 
@@ -58,3 +58,6 @@
     <% end %>
 
 </table>
+
+<br>
+<%= link_to "Back to Subjects", :action=>'display_marks', :id=>@exam.id%>

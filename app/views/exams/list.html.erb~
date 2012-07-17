@@ -1,4 +1,4 @@
-<h2>Exams</h2>
+<center><h2>Exams</h2></center>
 
 <form action="/exams/list">
 <table>

@@ -1,8 +1,8 @@
-<h4>Students List</h4>
-<h6>Department: <%= @department_name %> </h6>
-<h6>Semester: <%= @semester %> </h6>
+<center><h2>Students List</h2></center>
+<h4>Department: <%= @department_name %> </h4>
+<h4>Semester: <%= @semester %> </h4>
 
-<table border="2">
+<table >
   <tr>
     <th><%= sortable "roll_no", "Roll Number", @department_id, @semester%></th>
     <th><%= sortable "reg_no", "Register Number", @department_id, @semester%></th>
@@ -22,5 +22,5 @@
   </tr>
   <% end %>
 </table>
-<%= will_paginate @students %>
-<div>
+<br>
+<%= link_to "Back" ,:action=>'index' %>

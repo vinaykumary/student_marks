@@ -62,6 +62,7 @@ class MarksController < ApplicationController
     conditions=""
     @exam=Exam.find(params[:exam])
     @subject=Subject.find(params[:subject])
+    @section=nil
     if params[:section].nil?
         conditions="exam_id=#{@exam.id} AND subject_id=#{@subject.id}"
       else

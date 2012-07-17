@@ -26,5 +26,6 @@
   <li><%=link_to "Update Marks", {:action=>"exam_subs",:id=>@exam.id} %></li>
     <li><%=link_to "View Marks", {:controller=>'marks', :action=>"display_marks",:id=>@exam.id} %></li>
   <li><%=link_to "Mark Analysis", {:controller=>"analysis",:id=>@exam.id} %></li>
+  <li><%=link_to "Delete Exam",:action=>'delete',:id=>@exam.id%></li>
   <li><%=link_to "Back to List", {:action=>"list"} %></li>
 <ul>

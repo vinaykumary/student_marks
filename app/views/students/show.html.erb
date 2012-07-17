@@ -1,27 +1,45 @@
 <% @page_title="#{@student.name}" %>
-<center><h2>Student Information</h2></center>
+<center><h3>Student Information</h3></center>
 <table>
   <tr>
-    <td>Name:</td>
+    <th>Name:</th>
     <td><%= @student.name %></th>
   </tr>
     <tr>
-    <td>Roll Number:</td>
+    <th>Roll Number:</th>
     <td><%= @student.roll_no %></th>
   </tr>
     <tr>
-    <td>Register Number:</td>
+    <th>Register Number:</th>
     <td><%= @student.reg_no %></th>
   </tr>
     <tr>
-    <td>Department:</td>
+    <th>Department:</th>
     <td><%= @student.department.name %></th>
   </tr>
     <tr>
-    <td>Section:</td>
+    <th>Section:</th>
     <td><%= @student.section %></th>
   </tr>
 </table>
 
 <br>
-<h2>Exam Performance:</h2>
+<h4>Exam Performance:</h4>
+<br>
+<form action="/students/view_marks/">
+<table>
+  <th>Select an Exam:</th>
+  <%= hidden_field_tag :id , @student.id%>
+  <td><select id="exam" name="exam">
+        <% for exam in @exams %>
+          <%= "<option value='".html_safe%><%= exam.id.to_s%><%="'>".html_safe%> <%=exam.name%> - <%=exam.date.to_date.to_s%> </option>
+        <% end %>
+      </select>
+  </td>
+</table>
+<input type=submit value="View" />
+</form>
+<br>
+<br>
+<%=link_to "Delete the Student",:action=>'delete',:id=>@student.id %><br>
+<%=link_to "Back",:action=>'list',:dept=>@student.department.id,:semester=>@student.semester %>

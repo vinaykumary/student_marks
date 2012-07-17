@@ -2,11 +2,13 @@
 <center><h3>Department of <%=@department.name %></h3></center>
 <center><h3><%= @year_map[@year]%> Year - Semester <%=@semester%></h3></center>
 <center><h3><%= @exam.name %></h3></center>
-<br><br>
+
 <center><h3>Result Analysis</h3></center>
-<br>
+
 <br>
 <b>Exam Date: <%=@exam.date.to_date%></b>
+<br>
+<b>Section: <%=@section%></b>
 <br>
 <b>Total Students: <%= @total_students %></b>
 <br>
@@ -34,27 +36,27 @@
     <% sub=Subject.find(@analysis_data[sno-1].keys[0]) %>
     <tr>
       <td><%= sno%></td>
-      <td><%= sub.subject_code +" - "+sub.name %>
-      <td>&nbsp;&nbsp;&nbsp;</td>
+      <td><%= sub.subject_code + " - " +sub.name %>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
       <td><%=@analysis_data[sno-1][@analysis_data[sno-1].keys[0]][:present]%></td>
       <td><%=@analysis_data[sno-1][@analysis_data[sno-1].keys[0]][:absent]%></td>
       <td><%=@analysis_data[sno-1][@analysis_data[sno-1].keys[0]][:passed]%></td>
       <td><%=@analysis_data[sno-1][@analysis_data[sno-1].keys[0]][:failed]%></td>
       <td><%=@analysis_data[sno-1][@analysis_data[sno-1].keys[0]][:pass_percent]%></td>
-      <% sno+=1 %>
+      <%sno+=1%>
     </tr>
   <%end%>
 </table>
+<br>
+<br>
+<h4>Top Three Ranking Students:</h4>
+
+<b>I Rank: <%=@ranks[0].student.name+" - "+@ranks[0].total.to_s+"/600 - "+@ranks[0].percentage.to_s+"%"%></b><br />
+<b>II Rank: <%=@ranks[1].student.name+" - "+@ranks[1].total.to_s+"/600 - "+@ranks[1].percentage.to_s+"%"%></b><br />
+<b>III Rank: <% if !@ranks[2].nil? %> <%= @ranks[2].student.name+" - "+@ranks[2].total.to_s+"/600 - "+@ranks[2].percentage.to_s+"%"%><%end%></b>
+
+<br>
 <br><br>
-<h4>Ranks:</h4>
-<b>Section A</b>
-I Rank: <b> <%=@Asec_ranks[0].student.name +" - "+ @Asec_ranks[0].total.name%>/600</b>
-II Rank: <b> <%=@Asec_ranks[1].student.name +" - "+@Asec_ranks[1].total.name%>/600 </b><br>
-III Rank: <b> <%=@Asec_ranks[2].student.name +" - "+@Asec_ranks[2].total.name%>/600 </b><br>
-<br><br>
-<b>Section B</b>
-I Rank: <b> <%=@Bsec_ranks[0].student.name +" - "+@Bsec_ranks[0].total.name%>/600</b>
-II Rank: <b> <%=@Bsec_ranks[1].student.name +" - "+@Bsec_ranks[1].total.name%>/600 </b><br>
-III Rank: <b> <%=@Bsec_ranks[2].student.name +" - "+@Bsec_ranks[2].total.name%>/600 </b><br>
 <br><br>
 <br>
+<p><b>Class In-Charge<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;​<b>HOD</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Principal</b></p> 

@@ -27,18 +27,18 @@
           <form action="/analysis/indiv_sub_fail">
           <table>
             <tr>
-              <td>Select Subject:</td>
               <td><%= select_tag :sub,options_from_collection_for_select(@subjects, :id, :name) %></td>
               <%= hidden_field_tag :id,@exam.id %>
+              <td><select id="section" name="section"><option value="A">A</option><option value="B">B</option></select></td>
               <td><input type="submit" value="View" /></td>
               </tr>
           </table>
           </form>
       </li>
 
-      <li><%=link_to "List by No. of Subjects Failed", :action=>'no_sub_fail',:id=>@exam.id %></li>
-      <li><%=link_to "Failures Summary", :action=>'fail_summary',:id=>@exam.id %></li>
+      <li>Failures By No. of Subjects Failed:  <%=link_to "Section A", :action=>'no_sub_fail',:id=>@exam.id,:section=>"A" %>&nbsp;&nbsp;<%=link_to "Section B", :action=>'no_sub_fail',:id=>@exam.id,:section=>"B" %></li>
+      <li>Failures Summary:  <%=link_to "Section A", :action=>'fail_summary',:id=>@exam.id,:section=>"A" %>&nbsp;&nbsp;<%=link_to "Section B", :action=>'fail_summary',:id=>@exam.id,:section=>"B" %></li>
     </ul>
   </li>
-  <li><%=link_to "Result Analysis", :action=>'result_analysis',:id=>@exam.id %></li>
+  <li>Result Analysis: <%=link_to "Section A", :action=>'result_analysis',:id=>@exam.id,:section=>"A" %>&nbsp;&nbsp;<%=link_to "Section A", :action=>'result_analysis',:id=>@exam.id,:section=>"B" %></li>
 </ul>

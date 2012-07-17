@@ -82,9 +82,11 @@ class AnalysisController < ApplicationController
     @subjects=Subject.where(:department_id=>@exam.department_id,:semester=>@exam.semester).order("subject_code")
     @subject=Subject.find(params[:sub])
 
+    @section=params[:section]
+
 #    @results=Result.find(:all,:conditions=>["exam_id=#{@exam.id} and result!='P'"],:joins=>[:student],:order=>'roll_no')
 
-  @marks=Mark.find(:all,:conditions=>["exam_id=#{@exam.id} and subject_id=#{@subject.id} and result!='P'"],:joins=>[:student],:order=>'roll_no')
+  @marks=Mark.find(:all,:conditions=>["exam_id=#{@exam.id} and subject_id=#{@subject.id} and result!='P' and students.section='#{@section}'"],:joins=>[:student],:order=>'roll_no')
 
     @no_absent=0
     @no_fail=0
@@ -104,6 +106,7 @@ class AnalysisController < ApplicationController
     @year=((@exam.semester.to_f/2.to_f).ceil).to_i
     @year_map={1=>"I",2=>"II",3=>"III",4=>"IV"}
 
+    @section=params[:section]
 
     @single_sub_f=0
     @two_sub_f=0
@@ -114,7 +117,7 @@ class AnalysisController < ApplicationController
     @gt_three_sub_marks=Hash.new
 
     #one Subject Failures
-    @single_sub_studs=Student.find(:all,:conditions=>["results.exam_id=32 and results.no_failed=1"],:joins=>[:results],:order=>'roll_no')
+    @single_sub_studs=Student.find(:all,:conditions=>["results.exam_id=32 and results.no_failed=1 and students.section='#{@section}'"],:joins=>[:results],:order=>'roll_no')
     @single_sub_f=@single_sub_studs.count
 
     for student in @single_sub_studs
@@ -123,7 +126,7 @@ class AnalysisController < ApplicationController
 
 
     #two Subject Failures
-    @two_sub_studs=Student.find(:all,:conditions=>["results.exam_id=32 and results.no_failed=2"],:joins=>[:results],:order=>'roll_no')
+    @two_sub_studs=Student.find(:all,:conditions=>["results.exam_id=32 and results.no_failed=2 and students.section='#{@section}'"],:joins=>[:results],:order=>'roll_no')
     @two_sub_f=@two_sub_studs.count
 
     for student in @two_sub_studs
@@ -132,7 +135,7 @@ class AnalysisController < ApplicationController
 
 
     #one Subject Failures
-    @gt_three_sub_studs=Student.find(:all,:conditions=>["results.exam_id=32 and results.no_failed>=3"],:joins=>[:results],:order=>'roll_no')
+    @gt_three_sub_studs=Student.find(:all,:conditions=>["results.exam_id=32 and results.no_failed>=3 and students.section='#{@section}'"],:joins=>[:results],:order=>'roll_no')
     @gt_three_f=@gt_three_sub_studs.count
     for student in @gt_three_sub_studs
       @gt_three_sub_marks[student.id]=Mark.find(:all,:joins=>[:subject],:conditions=>{:student_id=>student.id,:exam_id=>@exam.id},:order=>'subject_code')
@@ -149,13 +152,14 @@ class AnalysisController < ApplicationController
     @year=((@exam.semester.to_f/2.to_f).ceil).to_i
     @year_map={1=>"I",2=>"II",3=>"III",4=>"IV"}
     @subjects=Subject.where(:department_id=>@exam.department_id,:semester=>@exam.semester).order("subject_code")
+    @section=params[:section]
 
-    @single_sub_f=Result.where("no_failed=1 and exam_id=32").count()
-    @two_sub_f=Result.where("no_failed=2 and exam_id=32").count()
-    @gt_three_f=Result.where("no_failed>=3 and exam_id=32").count()
-    @abs=Result.where("no_failed=0 and result='A' and exam_id=32").count()
+    @single_sub_f=Result.where("no_failed=1 and exam_id=32 and section='#{@section}'").count()
+    @two_sub_f=Result.where("no_failed=2 and exam_id=32 and section='#{@section}'").count()
+    @gt_three_f=Result.where("no_failed>=3 and exam_id=32 and section='#{@section}'").count()
+    @abs=Result.where("no_failed=0 and result='A' and exam_id=32 and section='#{@section}'").count()
 
-    @total_students=Student.where("department_id=#{@department.id} and semester=#{@semester}").count()
+    @total_students=Student.where("department_id=#{@department.id} and semester=#{@semester} and section='#{@section}'").count()
   end
 
   def result_analysis
@@ -165,19 +169,42 @@ class AnalysisController < ApplicationController
     @year=((@exam.semester.to_f/2.to_f).ceil).to_i
     @year_map={1=>"I",2=>"II",3=>"III",4=>"IV"}
     @subjects=Subject.where(:department_id=>@exam.department_id,:semester=>@exam.semester).order("subject_code")
+    @section=params[:section]
 
     @analysis_data=Array.new
     @total_pass=0
-    @total_students=Student.where("department_id=#{@department.id} and semester=#{@semester}").count()
+    @total_students=Student.where("department_id=#{@department.id} and semester=#{@semester} and section='#{@section}' ").count()
+    @total_pass=Result.find(:all,:conditions=>["exam_id=#{@exam.id} and  result='P' and section='#{@section}'"]).count()
 
     for subject in @subjects
-      present=Mark.where("exam_id=#{@exam.id} and subject_id=#{subject.id} and result!='A'").count()
-      absent=Mark.where("exam_id=#{@exam.id} and subject_id=#{subject.id} and result='A'").count()
-      passed=Mark.where("exam_id=#{@exam.id} and subject_id=#{subject.id} and result='P'").count()
-      failed=Mark.where("exam_id=#{@exam.id} and subject_id=#{subject.id} and result='F'").count()
-      total_students=Mark.where("exam_id=#{@exam.id} and subject_id=#{subject.id}").count()
+      @marks=Mark.find(:all,:joins=>[:student],:conditions=>["exam_id=#{@exam.id} and subject_id=#{subject.id} and students.section='#{@section}'"])
+      total_students=@marks.count()
+      passed=0
+      failed=0
+      present=0
+      absent=0
+
+      for mark in @marks
+        if mark.result=="P"
+          passed+=1
+          present+=1
+        elsif mark.result=="F"
+          failed+=1
+          present+=1
+        elsif mark.result=="A"
+          absent+=1
+        end
+      end
+
+
+
+#        present=Mark.find(:all,:joins=>[:student],:conditions=>["exam_id=#{@exam.id} and subject_id=#{subject.id} and result!='A' and students.section='#{@section}'"]).count()
+#        absent=Mark.find(:all,:joins=>[:student],:conditions=>["exam_id=#{@exam.id} and subject_id=#{subject.id} and result='A' and students.section='#{@section}'"]).count()
+#        passed=Mark.find(:all,:joins=>[:student],:conditions=>["exam_id=#{@exam.id} and subject_id=#{subject.id} and result='P' and students.section='#{@section}'"]).count()
+#        failed=Mark.find(:all,:joins=>[:student],:conditions=>["exam_id=#{@exam.id} and subject_id=#{subject.id} and result='F' and students.section='#{@section}'"]).count()
+#      total_students=Mark.find(:all,:joins=>[:student],:conditions=>["exam_id=#{@exam.id} and subject_id=#{subject.id} and students.section='#{@section}'"]).count()
+
       pass_percent=((passed.to_f/total_students.to_f)*100).to_f.round(2)
-      @total_pass+=passed
       @analysis_data<<{subject.id => {
                                         :present=>present,
                                         :absent=>absent,
@@ -188,20 +215,17 @@ class AnalysisController < ApplicationController
                                       }
                       }
 
+
     end
 
     @pass_percent_ovr=((@total_pass.to_f/@total_students.to_f)*100).to_f.round(2)
 
-    @Asec_ranks=Array.new
-    @Bsec_ranks=Array.new
+    @ranks=Array.new
 
     3.times do |i|
-      @Asec_ranks << Result.where("exam_id=#{@exam.id} and section='A' and rank=#{i+1}")
-      @Bsec_ranks << Result.where("exam_id=#{@exam.id} and section='B' and rank=#{i+1}")
+      @ranks << Result.where("exam_id=#{@exam.id} and section='#{@section}' and rank=#{i+1}")[0]
     end
 
-
-#    puts @analysis_data
 
   end
 

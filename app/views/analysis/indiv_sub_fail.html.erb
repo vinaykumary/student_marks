@@ -6,7 +6,9 @@
 <br>
 <b>Subject Code / Name: <%= @subject.subject_code%> - <%=@subject.name%></b>
 <br>
-<b>Staff Name(s):</b>
+<b>Section: <%= @section %></b>
+<br>
+<b>Staff Name:</b>
 <br>
 <br>
 <br>
@@ -19,7 +21,6 @@
   <table border=1>
     <tr>
       <th>SNO</th>
-      <th>Section</th>
       <th>Roll No.</th>
       <th>Name</th>
       <th>Marks</th>
@@ -29,7 +30,6 @@
       <tr>
         <%student=mark.student%>
         <td><%=sno%></td>
-        <td><%=student.section%></td>
         <td><%=student.roll_no%></td>
         <td><%=student.name%></td>
         <td>

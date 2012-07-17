@@ -7,6 +7,8 @@
 <br>
 <b>Exam Date: <%=@exam.date.to_date%></b>
 <br>
+<b>Section: <%=@section%></b>
+<br>
 <br>
 <% if @single_sub_f==0 && @two_sub_f==0 && @gt_three_f==0 %>
   NIL FAILURES!
@@ -18,7 +20,6 @@
           <th>SNO</th>
           <th>Roll No.</th>
           <th>Name</th>
-          <th>Section</th>
           <% for subject in @subjects %>
             <th><%=subject.abbreviation%></th>
           <% end %>
@@ -30,7 +31,6 @@
             <% sno1+=1 %>
             <td><%= student.roll_no %></td>
             <td><%=student.name %></td>
-            <td><%=student.section %></td>
             <td><%=@sing_sub_marks[student.id][0].marks%></td>
             <td><%=@sing_sub_marks[student.id][1].marks%></td>
             <td><%=@sing_sub_marks[student.id][2].marks%></td>
@@ -51,7 +51,7 @@
           <th>SNO</th>
           <th>Roll No.</th>
           <th>Name</th>
-          <th>Section</th>
+
           <% for subject in @subjects %>
             <th><%=subject.abbreviation%></th>
           <% end %>
@@ -63,7 +63,7 @@
             <% sno2+=1 %>
             <td><%=student.roll_no%></td>
             <td><%=student.name %></td>
-            <td><%=student.section %></td>
+
             <td><%=@two_sub_marks[student.id][0].marks%></td>
             <td><%=@two_sub_marks[student.id][1].marks%></td>
             <td><%=@two_sub_marks[student.id][2].marks%></td>
@@ -84,7 +84,7 @@
           <th>SNO</th>
           <th>Roll No.</th>
           <th>Name</th>
-          <th>Section</th>
+
           <% for subject in @subjects %>
             <th><%=subject.abbreviation%></th>
           <% end %>
@@ -96,7 +96,7 @@
             <% sno2+=1 %>
             <td><%=student.roll_no%></td>
             <td><%=student.name %></td>
-            <td><%=student.section %></td>
+
             <td><%=@gt_three_sub_marks[student.id][0].marks%></td>
             <td><%=@gt_three_sub_marks[student.id][1].marks%></td>
             <td><%=@gt_three_sub_marks[student.id][2].marks%></td>

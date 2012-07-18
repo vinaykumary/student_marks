@@ -15,8 +15,8 @@ class MarksController < ApplicationController
 
   def update
     @marks=params[:mark]
-#    puts "**********     DEBUGGING    ***********"
-#    puts @marks
+
+
     for mark in @marks
       result=Result.find_by_student_id_and_exam_id(mark[1][:student_id],params[:exam])
 
@@ -27,30 +27,49 @@ class MarksController < ApplicationController
         @marks[mark[0]]["result"]="A"
         if(result.result!="F")
           result.result="A"
-#          if result.no_failed.nil?
-#            result.no_failed=1
-#          else
-#            result.no_failed+=1
-#          end
         end
       else
          @marks[mark[0]]["result"]="F"
          result.result="F"
-          if result.no_failed.nil?
-            result.no_failed=1
-          else
-            result.no_failed+=1
-          end
       end
-      if result.total.nil?
-        result.total=mark[1][:marks].to_i
-      else
-        result.total+=mark[1][:marks].to_i
+
+#      if result.total.nil?
+#        result.total=mark[1][:marks].to_i
+#      else
+#        result.total+=mark[1][:marks].to_i
+#      end
+#      result.percentage=((result.total.to_f/600).to_f*100).to_f.round(2)
+      result.save
+
+
+    end
+    Mark.update(@marks.keys,@marks.values)
+
+    #Result Updation
+
+    @exam=Exam.find(params[:exam])
+
+    students=Student.find_by_sql("SELECT id FROM students WHERE department_id=#{@exam.department_id} and semester=#{@exam.semester} and section='#{params[:section]}' ORDER BY roll_no")
+
+    for student in students
+      stud_marks=Mark.find(:all,:conditions=>{:student_id=>student.id,:exam_id=>@exam.id})
+      result=Result.find_by_student_id_and_exam_id(student.id,@exam.id)
+      total=0
+      no_failed=0
+      for mark in stud_marks
+        if mark.result=="F"
+          total+=mark.marks.to_i
+          no_failed+=1
+        elsif mark.result=="P"
+          total+=mark.marks.to_i
+        end
       end
+      result.no_failed=no_failed
+      result.total=total
       result.percentage=((result.total.to_f/600).to_f*100).to_f.round(2)
       result.save
     end
-    Mark.update(@marks.keys,@marks.values)
+
     redirect_to :controller=>'exams', :action=>'exam_subs', :id=>params[:exam]
   end
 

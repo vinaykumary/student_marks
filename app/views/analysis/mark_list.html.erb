@@ -28,12 +28,48 @@
         <% sno+=1 %>
         <td><%=student.roll_no%></td>
         <td><%=student.name %></td>
-        <td><%=@marks[student.id][0].marks%></td>
-        <td><%=@marks[student.id][1].marks%></td>
-        <td><%=@marks[student.id][2].marks%></td>
-        <td><%=@marks[student.id][3].marks%></td>
-        <td><%=@marks[student.id][4].marks%></td>
-        <td><%=@marks[student.id][5].marks%></td>
+        <td><%if @marks[student.id][0].marks==-1%>
+              <%="AB"%>
+            <%elsif @marks[student.id][0].marks<50%>
+              <b><%=@marks[student.id][0].marks%></b>
+            <%else%>
+              <%=@marks[student.id][0].marks%>
+            <%end%></td>
+        <td><%if @marks[student.id][1].marks==-1%>
+              <%="AB"%>
+            <%elsif @marks[student.id][1].marks<50%>
+              <b><%=@marks[student.id][1].marks%></b>
+            <%else%>
+              <%=@marks[student.id][1].marks%>
+            <%end%></td>
+        <td><%if @marks[student.id][2].marks==-1%>
+              <%="AB"%>
+            <%elsif @marks[student.id][2].marks<50%>
+              <b><%=@marks[student.id][2].marks%></b>
+            <%else%>
+              <%=@marks[student.id][2].marks%>
+            <%end%></td>
+        <td><%if @marks[student.id][3].marks==-1%>
+              <%="AB"%>
+            <%elsif @marks[student.id][3].marks<50%>
+              <b><%=@marks[student.id][3].marks%></b>
+            <%else%>
+              <%=@marks[student.id][3].marks%>
+            <%end%></td>
+        <td><%if @marks[student.id][4].marks==-1%>
+              <%="AB"%>
+            <%elsif @marks[student.id][4].marks<50%>
+              <b><%=@marks[student.id][4].marks%></b>
+            <%else%>
+              <%=@marks[student.id][4].marks%>
+            <%end%></td>
+        <td><%if @marks[student.id][5].marks==-1%>
+              <%="AB"%>
+            <%elsif @marks[student.id][5].marks<50%>
+              <b><%=@marks[student.id][5].marks%></b>
+            <%else%>
+              <%=@marks[student.id][5].marks%>
+            <%end%></td>
         <% result=@results.detect{|r| r.student_id==student.id} %>
         <td><%=result.total%></td>
         <td><%=result.percentage%>%</td>

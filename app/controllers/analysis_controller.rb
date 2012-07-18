@@ -27,20 +27,32 @@ class AnalysisController < ApplicationController
 
     results=Result.where(:exam_id=>@exam.id,:section=>"A").order("total desc")
     rank=1
+    prev_total=results[0].total
     results.each do |result|
       if result.result=="P"
-        result.rank=rank
-        rank+=1
+        if(result.total==prev_total)
+          result.rank=rank
+        else
+          rank+=1
+          result.rank=rank
+        end
+        prev_total=result.total
       end
-      #result.percentage=((result.total.to_f/600).to_f*100).to_f.round(2)
+
       result.save
     end
     results=Result.where(:exam_id=>@exam.id,:section=>"B").order("total desc")
     rank=1
+    prev_total=results[0].total
     results.each do |result|
       if result.result=="P"
-        result.rank=rank
-        rank+=1
+        if(result.total==prev_total)
+          result.rank=rank
+        else
+          rank+=1
+          result.rank=rank
+        end
+        prev_total=result.total
       end
       #result.percentage=((result.total.to_f/600).to_f*100).to_f.round(2)
       result.save

@@ -31,12 +31,48 @@
             <% sno1+=1 %>
             <td><%= student.roll_no %></td>
             <td><%=student.name %></td>
-            <td><%=@sing_sub_marks[student.id][0].marks%></td>
-            <td><%=@sing_sub_marks[student.id][1].marks%></td>
-            <td><%=@sing_sub_marks[student.id][2].marks%></td>
-            <td><%=@sing_sub_marks[student.id][3].marks%></td>
-            <td><%=@sing_sub_marks[student.id][4].marks%></td>
-            <td><%=@sing_sub_marks[student.id][5].marks%></td>
+            <td><%if @sing_sub_marks[student.id][0].marks==-1%>
+              <%="AB"%>
+            <%elsif @sing_sub_marks[student.id][0].marks<50%>
+              <b><%=@sing_sub_marks[student.id][0].marks%></b>
+            <%else%>
+              <%=@sing_sub_marks[student.id][0].marks%>
+            <%end%></td>
+        <td><%if @sing_sub_marks[student.id][1].marks==-1%>
+              <%="AB"%>
+            <%elsif @sing_sub_marks[student.id][1].marks<50%>
+              <b><%=@sing_sub_marks[student.id][1].marks%></b>
+            <%else%>
+              <%=@sing_sub_marks[student.id][1].marks%>
+            <%end%></td>
+        <td><%if @sing_sub_marks[student.id][2].marks==-1%>
+              <%="AB"%>
+            <%elsif @sing_sub_marks[student.id][2].marks<50%>
+              <b><%=@sing_sub_marks[student.id][2].marks%></b>
+            <%else%>
+              <%=@sing_sub_marks[student.id][2].marks%>
+            <%end%></td>
+        <td><%if @sing_sub_marks[student.id][3].marks==-1%>
+              <%="AB"%>
+            <%elsif @sing_sub_marks[student.id][3].marks<50%>
+              <b><%=@sing_sub_marks[student.id][3].marks%></b>
+            <%else%>
+              <%=@sing_sub_marks[student.id][3].marks%>
+            <%end%></td>
+        <td><%if @sing_sub_marks[student.id][4].marks==-1%>
+              <%="AB"%>
+            <%elsif @sing_sub_marks[student.id][4].marks<50%>
+              <b><%=@sing_sub_marks[student.id][4].marks%></b>
+            <%else%>
+              <%=@sing_sub_marks[student.id][4].marks%>
+            <%end%></td>
+        <td><%if @sing_sub_marks[student.id][5].marks==-1%>
+              <%="AB"%>
+            <%elsif @sing_sub_marks[student.id][5].marks<50%>
+              <b><%=@sing_sub_marks[student.id][5].marks%></b>
+            <%else%>
+              <%=@sing_sub_marks[student.id][5].marks%>
+            <%end%></td>
           </tr>
         <% end %>
     </table>
@@ -64,12 +100,48 @@
             <td><%=student.roll_no%></td>
             <td><%=student.name %></td>
 
-            <td><%=@two_sub_marks[student.id][0].marks%></td>
-            <td><%=@two_sub_marks[student.id][1].marks%></td>
-            <td><%=@two_sub_marks[student.id][2].marks%></td>
-            <td><%=@two_sub_marks[student.id][3].marks%></td>
-            <td><%=@two_sub_marks[student.id][4].marks%></td>
-            <td><%=@two_sub_marks[student.id][5].marks%></td>
+            <td><%if @two_sub_marks[student.id][0].marks==-1%>
+              <%="AB"%>
+            <%elsif @two_sub_marks[student.id][0].marks<50%>
+              <b><%=@two_sub_marks[student.id][0].marks%></b>
+            <%else%>
+              <%=@two_sub_marks[student.id][0].marks%>
+            <%end%></td>
+        <td><%if @two_sub_marks[student.id][1].marks==-1%>
+              <%="AB"%>
+            <%elsif @two_sub_marks[student.id][1].marks<50%>
+              <b><%=@two_sub_marks[student.id][1].marks%></b>
+            <%else%>
+              <%=@two_sub_marks[student.id][1].marks%>
+            <%end%></td>
+        <td><%if @two_sub_marks[student.id][2].marks==-1%>
+              <%="AB"%>
+            <%elsif @two_sub_marks[student.id][2].marks<50%>
+              <b><%=@two_sub_marks[student.id][2].marks%></b>
+            <%else%>
+              <%=@two_sub_marks[student.id][2].marks%>
+            <%end%></td>
+        <td><%if @two_sub_marks[student.id][3].marks==-1%>
+              <%="AB"%>
+            <%elsif @two_sub_marks[student.id][3].marks<50%>
+              <b><%=@two_sub_marks[student.id][3].marks%></b>
+            <%else%>
+              <%=@two_sub_marks[student.id][3].marks%>
+            <%end%></td>
+        <td><%if @two_sub_marks[student.id][4].marks==-1%>
+              <%="AB"%>
+            <%elsif @two_sub_marks[student.id][4].marks<50%>
+              <b><%=@two_sub_marks[student.id][4].marks%></b>
+            <%else%>
+              <%=@two_sub_marks[student.id][4].marks%>
+            <%end%></td>
+        <td><%if @two_sub_marks[student.id][5].marks==-1%>
+              <%="AB"%>
+            <%elsif @two_sub_marks[student.id][5].marks<50%>
+              <b><%=@two_sub_marks[student.id][5].marks%></b>
+            <%else%>
+              <%=@two_sub_marks[student.id][5].marks%>
+            <%end%></td>
           </tr>
         <% end %>
     </table>
@@ -97,12 +169,48 @@
             <td><%=student.roll_no%></td>
             <td><%=student.name %></td>
 
-            <td><%=@gt_three_sub_marks[student.id][0].marks%></td>
-            <td><%=@gt_three_sub_marks[student.id][1].marks%></td>
-            <td><%=@gt_three_sub_marks[student.id][2].marks%></td>
-            <td><%=@gt_three_sub_marks[student.id][3].marks%></td>
-            <td><%=@gt_three_sub_marks[student.id][4].marks%></td>
-            <td><%=@gt_three_sub_marks[student.id][5].marks%></td>
+            <td><%if @gt_three_sub_marks[student.id][0].marks==-1%>
+              <%="AB"%>
+            <%elsif @gt_three_sub_marks[student.id][0].marks<50%>
+              <b><%=@gt_three_sub_marks[student.id][0].marks%></b>
+            <%else%>
+              <%=@gt_three_sub_marks[student.id][0].marks%>
+            <%end%></td>
+        <td><%if @gt_three_sub_marks[student.id][1].marks==-1%>
+              <%="AB"%>
+            <%elsif @gt_three_sub_marks[student.id][1].marks<50%>
+              <b><%=@gt_three_sub_marks[student.id][1].marks%></b>
+            <%else%>
+              <%=@gt_three_sub_marks[student.id][1].marks%>
+            <%end%></td>
+        <td><%if @gt_three_sub_marks[student.id][2].marks==-1%>
+              <%="AB"%>
+            <%elsif @gt_three_sub_marks[student.id][2].marks<50%>
+              <b><%=@gt_three_sub_marks[student.id][2].marks%></b>
+            <%else%>
+              <%=@gt_three_sub_marks[student.id][2].marks%>
+            <%end%></td>
+        <td><%if @gt_three_sub_marks[student.id][3].marks==-1%>
+              <%="AB"%>
+            <%elsif @gt_three_sub_marks[student.id][3].marks<50%>
+              <b><%=@gt_three_sub_marks[student.id][3].marks%></b>
+            <%else%>
+              <%=@gt_three_sub_marks[student.id][3].marks%>
+            <%end%></td>
+        <td><%if @gt_three_sub_marks[student.id][4].marks==-1%>
+              <%="AB"%>
+            <%elsif @gt_three_sub_marks[student.id][4].marks<50%>
+              <b><%=@gt_three_sub_marks[student.id][4].marks%></b>
+            <%else%>
+              <%=@gt_three_sub_marks[student.id][4].marks%>
+            <%end%></td>
+        <td><%if @gt_three_sub_marks[student.id][5].marks==-1%>
+              <%="AB"%>
+            <%elsif @gt_three_sub_marks[student.id][5].marks<50%>
+              <b><%=@gt_three_sub_marks[student.id][5].marks%></b>
+            <%else%>
+              <%=@gt_three_sub_marks[student.id][5].marks%>
+            <%end%></td>
           </tr>
         <% end %>
     </table>

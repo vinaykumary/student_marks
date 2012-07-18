@@ -35,6 +35,8 @@
         <td>
             <%if mark.marks==-1%>
               <%="AB"%>
+            <%elsif mark.marks<50%>
+              <b><%=mark.marks%></b>
             <%else%>
               <%=mark.marks%>
             <%end%>

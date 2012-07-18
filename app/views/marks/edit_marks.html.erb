@@ -40,7 +40,7 @@
 <br>
 <p>Please enter marks as -1 if student is absent for the exam</p>
 <br>
-<%=  form_for :mark,:url=>{:action=>'update',:exam=>@exam.id} do -%>
+<%=  form_for :mark,:url=>{:action=>'update',:exam=>@exam.id,:section=>@section} do -%>
 <table>
   <tr>
     <th>Roll No</th>
@@ -62,6 +62,12 @@
         <td><%= mark_fields.text_field :marks %></td>
         <%= mark_fields.hidden_field :student_id,:value=>mark.student.id %>
       </tr>
+
+     <!-- <% if mark.marks.nil? %>
+          <%= mark_fields.hidden_field :new, :value=>"T" %>
+      <% else %>
+          <%= mark_fields.hidden_field :new, :value=>"F" %>
+      <% end %> -->
     <% end %>
   <% end %>
 </table>

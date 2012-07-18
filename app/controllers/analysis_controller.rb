@@ -26,6 +26,7 @@ class AnalysisController < ApplicationController
     @subjects=$subjects
 
     results=Result.where(:exam_id=>@exam.id,:section=>"A").order("total desc")
+    if(results.count()!=0)
     rank=1
     prev_total=results[0].total
     results.each do |result|
@@ -41,7 +42,10 @@ class AnalysisController < ApplicationController
 
       result.save
     end
+    end
+
     results=Result.where(:exam_id=>@exam.id,:section=>"B").order("total desc")
+    if(results.count()!=0)
     rank=1
     prev_total=results[0].total
     results.each do |result|
@@ -56,6 +60,7 @@ class AnalysisController < ApplicationController
       end
       #result.percentage=((result.total.to_f/600).to_f*100).to_f.round(2)
       result.save
+    end
     end
 
   end

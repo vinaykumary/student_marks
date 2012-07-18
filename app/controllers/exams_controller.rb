@@ -34,6 +34,7 @@ class ExamsController < ApplicationController
           result.student_id=student.id
           result.exam_id=@exam.id
           result.section=student.section
+          result.result="P"
         result.save
       end
       redirect_to :action=>'list',:dept=>@exam.department_id

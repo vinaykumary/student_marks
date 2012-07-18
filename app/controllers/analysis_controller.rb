@@ -120,7 +120,7 @@ class AnalysisController < ApplicationController
     @gt_three_sub_marks=Hash.new
 
     #one Subject Failures
-    @single_sub_studs=Student.find(:all,:conditions=>["results.exam_id=32 and results.no_failed=1 and students.section='#{@section}'"],:joins=>[:results],:order=>'roll_no')
+    @single_sub_studs=Student.find(:all,:conditions=>["results.exam_id=#{@exam.id} and results.no_failed=1 and students.section='#{@section}'"],:joins=>[:results],:order=>'roll_no')
     @single_sub_f=@single_sub_studs.count
 
     for student in @single_sub_studs
@@ -129,7 +129,7 @@ class AnalysisController < ApplicationController
 
 
     #two Subject Failures
-    @two_sub_studs=Student.find(:all,:conditions=>["results.exam_id=32 and results.no_failed=2 and students.section='#{@section}'"],:joins=>[:results],:order=>'roll_no')
+    @two_sub_studs=Student.find(:all,:conditions=>["results.exam_id=#{@exam.id} and results.no_failed=2 and students.section='#{@section}'"],:joins=>[:results],:order=>'roll_no')
     @two_sub_f=@two_sub_studs.count
 
     for student in @two_sub_studs
@@ -138,7 +138,7 @@ class AnalysisController < ApplicationController
 
 
     #one Subject Failures
-    @gt_three_sub_studs=Student.find(:all,:conditions=>["results.exam_id=32 and results.no_failed>=3 and students.section='#{@section}'"],:joins=>[:results],:order=>'roll_no')
+    @gt_three_sub_studs=Student.find(:all,:conditions=>["results.exam_id=#{@exam.id} and results.no_failed>=3 and students.section='#{@section}'"],:joins=>[:results],:order=>'roll_no')
     @gt_three_f=@gt_three_sub_studs.count
     for student in @gt_three_sub_studs
       @gt_three_sub_marks[student.id]=Mark.find(:all,:joins=>[:subject],:conditions=>{:student_id=>student.id,:exam_id=>@exam.id},:order=>'subject_code')
@@ -157,10 +157,10 @@ class AnalysisController < ApplicationController
     @subjects=Subject.where(:department_id=>@exam.department_id,:semester=>@exam.semester).order("subject_code")
     @section=params[:section]
 
-    @single_sub_f=Result.where("no_failed=1 and exam_id=32 and section='#{@section}'").count()
-    @two_sub_f=Result.where("no_failed=2 and exam_id=32 and section='#{@section}'").count()
-    @gt_three_f=Result.where("no_failed>=3 and exam_id=32 and section='#{@section}'").count()
-    @abs=Result.where("no_failed=0 and result='A' and exam_id=32 and section='#{@section}'").count()
+    @single_sub_f=Result.where("no_failed=1 and exam_id=#{@exam.id} and section='#{@section}'").count()
+    @two_sub_f=Result.where("no_failed=2 and exam_id=#{@exam.id} and section='#{@section}'").count()
+    @gt_three_f=Result.where("no_failed>=3 and exam_id=#{@exam.id} and section='#{@section}'").count()
+    @abs=Result.where("no_failed=0 and result='A' and exam_id=#{@exam.id} and section='#{@section}'").count()
 
     @total_students=Student.where("department_id=#{@department.id} and semester=#{@semester} and section='#{@section}'").count()
   end

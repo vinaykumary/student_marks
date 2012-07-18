@@ -19,7 +19,8 @@ class MarksController < ApplicationController
 #    puts @marks
     for mark in @marks
       result=Result.find_by_student_id_and_exam_id(mark[1][:student_id],params[:exam])
-      result.result="P"
+
+
       if(mark[1][:marks].to_i >=50)
         @marks[mark[0]]["result"]="P"
       elsif(mark[1][:marks].to_i ==-1)

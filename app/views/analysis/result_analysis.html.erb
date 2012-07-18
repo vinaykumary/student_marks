@@ -52,7 +52,7 @@
 <h4>Top Three Ranking Students:</h4>
 
 <b>I Rank: <%=@ranks[0].student.name+" - "+@ranks[0].total.to_s+"/600 - "+@ranks[0].percentage.to_s+"%"%></b><br />
-<b>II Rank: <%=@ranks[1].student.name+" - "+@ranks[1].total.to_s+"/600 - "+@ranks[1].percentage.to_s+"%"%></b><br />
+<b>II Rank:<% if !@ranks[2].nil? %> <%=@ranks[1].student.name+" - "+@ranks[1].total.to_s+"/600 - "+@ranks[1].percentage.to_s+"%"%><%end%></b><br />
 <b>III Rank: <% if !@ranks[2].nil? %> <%= @ranks[2].student.name+" - "+@ranks[2].total.to_s+"/600 - "+@ranks[2].percentage.to_s+"%"%><%end%></b>
 
 <br>

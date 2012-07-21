@@ -17,11 +17,11 @@
         margin-bottom: 25px;
         padding: 0;
         background-color: #f0f0f0;
-        font-family: "Lucida Grande", "Bitstream Vera Sans", "Verdana";
+        font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
         font-size: 15px;
         color: #333;
       }
-
+/*"Lucida Grande", "Bitstream Vera Sans", "Verdana"*/
 table
 {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
@@ -40,7 +40,12 @@ table
 	padding: 8px 8px;
 	border-bottom: 2px solid #6678b1;
 }
-#notice { background-color: #A4E7A0; border: 1px solid #26722D; width: 500px; height:40px}
+
+#notice {
+  background-color: #A4E7A0;
+  border: 1px solid #26722D;
+  width: 500px;
+  height:40px}
 
  td
 {
@@ -49,9 +54,9 @@ table
 	padding: 6px 8px;
 }
  tbody tr:hover td
-{
+  {
 	color: #009;
-}
+  }
 
 
       h1 {
@@ -89,9 +94,6 @@ table
         width: 175px;
       }
 
-      #footer {
-        clear: both;
-      }
 
       #header, #about, #getting-started {
         padding-left: 75px;
@@ -113,82 +115,7 @@ table
       }
 
 
-      #about h3 {
-        margin: 0;
-        margin-bottom: 10px;
-        font-size: 14px;
-      }
 
-      #about-content {
-        background-color: #ffd;
-        border: 1px solid #fc0;
-        margin-left: -55px;
-        margin-right: -10px;
-      }
-      #about-content table {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        font-size: 11px;
-        border-collapse: collapse;
-      }
-      #about-content td {
-        padding: 10px;
-        padding-top: 3px;
-        padding-bottom: 3px;
-      }
-      #about-content td.name  {color: #555}
-      #about-content td.value {color: #000}
-
-      #about-content ul {
-        padding: 0;
-        list-style-type: none;
-      }
-
-      #about-content.failure {
-        background-color: #fcc;
-        border: 1px solid #f00;
-      }
-      #about-content.failure p {
-        margin: 0;
-        padding: 10px;
-      }
-
-
-      #getting-started {
-        border-top: 1px solid #ccc;
-        margin-top: 25px;
-        padding-top: 15px;
-      }
-      #getting-started h1 {
-        margin: 0;
-        font-size: 20px;
-      }
-      #getting-started h2 {
-        margin: 0;
-        font-size: 14px;
-        font-weight: normal;
-        color: #333;
-        margin-bottom: 25px;
-      }
-      #getting-started ol {
-        margin-left: 0;
-        padding-left: 0;
-      }
-      #getting-started li {
-        font-size: 18px;
-        color: #888;
-        margin-bottom: 25px;
-      }
-      #getting-started li h2 {
-        margin: 0;
-        font-weight: normal;
-        font-size: 18px;
-        color: #333;
-      }
-      #getting-started li p {
-        color: #555;
-        font-size: 13px;
-      }
 
 
       #sidebar ul {

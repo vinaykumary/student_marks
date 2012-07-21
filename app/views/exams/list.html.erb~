@@ -1,5 +1,5 @@
 <center><h2>Exams</h2></center>
-
+<br><br>
 <form action="/exams/list">
 <table>
   <tr>
@@ -10,12 +10,12 @@
     </tr>
 </table>
 </form>
-
+<br><br>
 <table>
   <tr>
     <th>Date</th>
     <th>Department</th>
-    <th>Semster</th>
+    <th>Semester</th>
     <th>Name</th>
     <th>Manage</th>
   </tr>
@@ -29,5 +29,4 @@
   <tr>
   <% end %>
 <table>
-
-<a href="/exams/new">Add a New Exam</a>
+<br><br>

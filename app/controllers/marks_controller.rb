@@ -25,12 +25,8 @@ class MarksController < ApplicationController
         @marks[mark[0]]["result"]="P"
       elsif(mark[1][:marks].to_i ==-1)
         @marks[mark[0]]["result"]="A"
-        if(result.result!="F")
-          result.result="A"
-        end
       else
          @marks[mark[0]]["result"]="F"
-         result.result="F"
       end
 
 #      if result.total.nil?
@@ -56,12 +52,16 @@ class MarksController < ApplicationController
       result=Result.find_by_student_id_and_exam_id(student.id,@exam.id)
       total=0
       no_failed=0
+      result.result="P"
       for mark in stud_marks
         if mark.result=="F"
           total+=mark.marks.to_i
           no_failed+=1
+          result.result="F"
         elsif mark.result=="P"
           total+=mark.marks.to_i
+        elsif mark.marks==-1
+          result.result="A"
         end
       end
       result.no_failed=no_failed

@@ -27,7 +27,7 @@
           <form action="/analysis/indiv_sub_fail">
           <table>
             <tr>
-              <td><%= select_tag :sub,options_from_collection_for_select(@subjects, :id, :name) %></td>
+              <td><%= select_tag :sub,options_from_collection_for_select(@subjects, :id, :abbreviation) %></td>
               <%= hidden_field_tag :id,@exam.id %>
               <td><select id="section" name="section"><option value="A">A</option><option value="B">B</option></select></td>
               <td><input type="submit" value="View" /></td>

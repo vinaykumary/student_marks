@@ -52,7 +52,7 @@
         <td><%= mark.student.roll_no %></td>
         <td><%= mark.student.name %></td>
         <td><%= mark.student.section %></td>
-        <td><% if mark.marks==-1 %> <%= "AB"%> <%elsif mark.marks<50%><b> <%= mark.marks %></b><%else%> <%= mark.marks %><%end%></td>
+        <td><% if mark.marks.nil? %><%= "NA"%><% elsif mark.marks==-1 %> <%= "AB"%> <%elsif mark.marks<50%><b> <%= mark.marks %></b><%else%> <%= mark.marks %><%end%></td>
         <td><%= mark.result %></td>
       </tr>
     <% end %>

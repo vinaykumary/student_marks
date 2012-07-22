@@ -10,6 +10,7 @@ gem 'heroku'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'bcrypt-ruby'
 
 group :development, :test do
   gem 'mysql2'

@@ -10,12 +10,7 @@
 
 <div id="page">
 
-<%if !flash[:notice].nil? %>
-  <div id="notice">
-    <p><%= flash[:notice] %></p>
-    <div class="clear"></div>
-  </div>
-<% end %>
+
 
 
 <div id="sidebar">
@@ -27,11 +22,19 @@
               <li><a href="/students/">Manage Students</a></li>
               <li><a href="/exams/">Manage Exams and Marks</a></li>
               <li><a href="/subjects/">Manage Subjects</a></li>
+              <% if current_user %>
+              <li><%= link_to "Logout",logout_path,:method=>:delete %>
+              <% end %>
             </ul>
           </li>
         </ul>
       </div>
 <div id="content">
+        <%if !flash[:notice].nil? %>
+          <div id="notice">
+            <p><%= flash[:notice] %></p>
+          </div>
+        <% end %>
         <div id="header">
           <h1>Mark Analysis System</h1>
           <h2>Panimalar Institute of Technology</h2>

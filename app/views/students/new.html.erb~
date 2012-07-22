@@ -6,7 +6,7 @@
 
 
 <div>
-  <h2>Add a new Student</h2>
+  <center><h2>Add a new Student</h2></center>
 
   <%= form_for(:student, :url => {:action => 'create'}) do |f| %>
 

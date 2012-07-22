@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PIT: Mark Analysis</title>
+    <style type="text/css" media="screen">
+ body {
+        margin: 0;
+        margin-bottom: 25px;
+        padding: 0;
+        background-color: #f0f0f0;
+        font-family: "Lucida Grande", "Bitstream Vera Sans", "Verdana";
+        font-size: 13px;
+        color: #333;
+      }
+
+      h1 {
+        font-size: 28px;
+        color: #000;
+      }
+
+      a  {color: #03c}
+      a:hover {
+        background-color: #03c;
+        color: white;
+        text-decoration: none;
+      }
+
+
+      #page {
+        background-color: #f0f0f0;
+        width: 750px;
+        margin: 0;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      #content {
+        float: left;
+        background-color: white;
+        border: 3px solid #aaa;
+        border-top: none;
+        padding: 25px;
+        width: 500px;
+      }
+
+      #sidebar {
+        float: right;
+        width: 175px;
+      }
+
+
+      #header, #home-content{
+        padding-left: 150px;
+        padding-right: 30px;
+      }
+
+
+      #header {
+        background-image: url("assets/PITLOGO.jpg");
+        background-repeat: no-repeat;
+        background-position: top left;
+        height: 100px;
+      }
+      #header h1, #header h2 {margin: 0}
+      #header h2 {
+        color: #888;
+        font-weight: normal;
+        font-size: 16px;
+      }
+
+
+
+
+      #home-content {
+        border-top: 1px solid #ccc;
+        margin-top: 25px;
+        padding-top: 15px;
+      }
+      #home-content h1 {
+        margin: 0;
+        font-size: 20px;
+      }
+      #home-content h2 {
+        margin: 0;
+        font-size: 14px;
+        font-weight: normal;
+        color: #333;
+        margin-bottom: 25px;
+      }
+      #home-content ol {
+        margin-left: 0;
+        padding-left: 0;
+      }
+      #home-content li {
+        font-size: 18px;
+        color: #888;
+        margin-bottom: 25px;
+      }
+      #home-content li h2 {
+        margin: 0;
+        font-weight: normal;
+        font-size: 18px;
+        color: #333;
+      }
+      #home-content li p {
+        color: #555;
+        font-size: 13px;
+      }
+
+
+      #sidebar ul {
+        margin-left: 0;
+        padding-left: 0;
+      }
+      #sidebar ul h3 {
+        margin-top: 25px;
+        font-size: 16px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+      }
+      #sidebar li {
+        list-style-type: none;
+      }
+      #sidebar ul.links li {
+        margin-bottom: 5px;
+      }
+
+      .filename {
+        font-style: italic;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div id="page">
+
+
+      <div id="content">
+
+        <div id="header">
+          <h1>Mark Analysis System</h1>
+          <h2>Panimalar Institute of Technology</h2>
+        </div>
+
+
+        <div id="home-content">
+          <h1>Main Menu</h1>
+          <ol>
+            <li>
+              <h2><a href="/students/">Manage Students</a></h2>
+              <p>Use this module to add, view and manage the Students list.</p>
+            </li>
+
+            <li>
+              <h2><a href="/exams/">Manage Exams</a></h2>
+              <p>Create new exams, update mark lists, view and download Analysis Info.</p>
+            </li>
+
+            <li>
+              <h2><a href="/subjects/">Manage Subjects</a></h2>
+              <p>View, add or modify subjects under various departments.</p>
+            </li>
+            <% if session[:user_id].nil? %>
+              <li>
+                <h2><%= link_to "Login",login_path%></h2>
+                <p>Login to access the System</p>
+              </li>
+            <%end%>
+
+          </ol>
+
+
+        </div>
+      </div>
+
+
+    </div>
+  </body>
+</html>
